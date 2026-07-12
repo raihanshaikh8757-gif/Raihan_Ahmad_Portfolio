@@ -6,7 +6,7 @@ export const siteConfig = {
   shortDescription:
     'Digital Marketer & Vibe Coder creating visuals and digital experiences that tell stories and drive results.',
   url: getSiteUrl(),
-  ogImage: '/raihan-profile.png',
+  ogImage: '/opengraph-image',
   locale: 'en_IN',
   keywords: [
     'Raihan Ahmad',
@@ -48,5 +48,5 @@ function getSiteUrl() {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  return 'http://localhost:3000';
+  return 'https://raihan-ahmad-portfolio.vercel.app';
 }
