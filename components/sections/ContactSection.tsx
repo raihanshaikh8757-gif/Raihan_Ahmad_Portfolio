@@ -1,8 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'motion/react';
-import { 
-  MapPin, Send, 
+import {
+  MapPin, Send,
   Linkedin, Facebook, Instagram, Youtube
 } from 'lucide-react';
 
@@ -17,6 +18,29 @@ const socials = [
 ];
 
 export default function ContactSection() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const whatsappMessage = [
+      'Hi Raihan,',
+      '',
+      `Name: ${name.trim()}`,
+      `Email: ${email.trim()}`,
+      `Subject: ${subject.trim()}`,
+      '',
+      'Message:',
+      message.trim(),
+    ].join('\n');
+
+    const url = `${WHATSAPP_LINK}?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
@@ -121,24 +145,56 @@ export default function ContactSection() {
             className="bg-white/70 backdrop-blur-xl p-8 md:p-10 rounded-[40px] shadow-sm border border-white/60"
           >
             <h3 className="text-2xl font-heading font-bold mb-6 text-[#1E1E1E]">Send a Message</h3>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-700">Name</label>
-                  <input type="text" placeholder="John Doe" className="w-full px-4 py-3 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/50 focus:border-[#FDB515] focus:bg-white/80 outline-none transition-all" />
+                  <label htmlFor="contact-name" className="text-sm font-bold text-gray-700">Name</label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="John Doe"
+                    required
+                    className="w-full px-4 py-3 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/50 focus:border-[#FDB515] focus:bg-white/80 outline-none transition-all"
+                  />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-700">Email</label>
-                  <input type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/50 focus:border-[#FDB515] focus:bg-white/80 outline-none transition-all" />
+                  <label htmlFor="contact-email" className="text-sm font-bold text-gray-700">Email</label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="john@example.com"
+                    required
+                    className="w-full px-4 py-3 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/50 focus:border-[#FDB515] focus:bg-white/80 outline-none transition-all"
+                  />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-gray-700">Subject</label>
-                <input type="text" placeholder="Project Inquiry" className="w-full px-4 py-3 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/50 focus:border-[#FDB515] focus:bg-white/80 outline-none transition-all" />
+                <label htmlFor="contact-subject" className="text-sm font-bold text-gray-700">Subject</label>
+                <input
+                  id="contact-subject"
+                  type="text"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                  placeholder="Project Inquiry"
+                  required
+                  className="w-full px-4 py-3 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/50 focus:border-[#FDB515] focus:bg-white/80 outline-none transition-all"
+                />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-gray-700">Message</label>
-                <textarea rows={4} placeholder="Tell me about your project..." className="w-full px-4 py-3 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/50 focus:border-[#FDB515] focus:bg-white/80 outline-none transition-all resize-none"></textarea>
+                <label htmlFor="contact-message" className="text-sm font-bold text-gray-700">Message</label>
+                <textarea
+                  id="contact-message"
+                  rows={4}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Tell me about your project..."
+                  required
+                  className="w-full px-4 py-3 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/50 focus:border-[#FDB515] focus:bg-white/80 outline-none transition-all resize-none"
+                />
               </div>
               <button type="submit" className="w-full bg-[#1E1E1E]/90 backdrop-blur-md border border-white/10 text-white py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-[#FDB515] hover:text-[#1E1E1E] transition-all group shadow-sm">
                 Send Message
