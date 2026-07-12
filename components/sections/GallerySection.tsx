@@ -414,7 +414,7 @@ export default function GallerySection() {
   useBodyScrollLock(!!activeItem);
 
   return (
-    <section className="py-24 bg-[#1E1E1E]/95 backdrop-blur-xl text-white relative overflow-hidden">
+    <section id="gallery" className="py-24 bg-[#1E1E1E]/95 backdrop-blur-xl text-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-72 h-72 bg-[#FDB515]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FDB515]/5 rounded-full blur-3xl pointer-events-none" />
 

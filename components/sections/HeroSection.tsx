@@ -6,7 +6,7 @@ import { FileDown, Mail, Phone, Linkedin } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col pt-6 pb-16 overflow-hidden">
+    <section className="relative flex min-h-screen flex-col overflow-hidden pb-16 pt-2">
       {/* Background elements */}
       <div className="absolute top-10 left-10 w-64 h-64 bg-[#FDB515] rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
       <div className="absolute top-40 right-10 w-72 h-72 bg-white rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
@@ -14,22 +14,7 @@ export default function HeroSection() {
       {/* Decorative dots / patterns */}
       <div className="absolute inset-0 bg-[radial-gradient(#1E1E1E_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.03]"></div>
 
-      {/* Header */}
-      <header className="container mx-auto px-6 relative z-20 mb-12 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-[#1E1E1E] flex items-center justify-center rounded-xl shadow-md">
-            <span className="text-[#FDB515] font-black text-xl font-heading">R</span>
-          </div>
-          <span className="font-black tracking-tighter text-xl font-heading text-[#1E1E1E]">RAIHAN AHMAD</span>
-        </div>
-        <nav className="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-gray-500">
-          <a href="#about" className="hover:text-[#FDB515] transition-colors">About</a>
-          <a href="#work" className="hover:text-[#FDB515] transition-colors">Work</a>
-          <a href="#contact" className="px-5 py-2.5 bg-[#1E1E1E] text-white rounded-full hover:bg-[#FDB515] hover:text-[#1E1E1E] transition-all shadow-sm">Contact Me</a>
-        </nav>
-      </header>
-
-      <div className="container mx-auto px-6 relative z-10 flex-1 flex flex-col justify-center">
+      <div className="container relative z-10 mx-auto flex flex-1 flex-col justify-center px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <motion.div 

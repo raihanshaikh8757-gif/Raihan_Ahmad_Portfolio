@@ -141,7 +141,7 @@ function SkillCard({ category, idx }: { category: (typeof skillCategories)[numbe
 
 export default function SkillsSection() {
   return (
-    <section className="py-24 relative">
+    <section id="skills" className="py-24 relative">
       <div className="container mx-auto px-6">
         
         <div className="mb-16">
