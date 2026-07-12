@@ -6,6 +6,8 @@ import { siteConfig } from '@/lib/site-config';
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-heading' });
 
+const ogImageUrl = siteConfig.ogImageAbsolute;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -31,7 +33,9 @@ export const metadata: Metadata = {
     description: siteConfig.shortDescription,
     images: [
       {
-        url: siteConfig.ogImage,
+        url: ogImageUrl,
+        secureUrl: ogImageUrl,
+        type: 'image/png',
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} — Digital Marketer & Vibe Coder`,
@@ -42,7 +46,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteConfig.title,
     description: siteConfig.shortDescription,
-    images: [siteConfig.ogImage],
+    images: [ogImageUrl],
     creator: siteConfig.social.twitter,
   },
   robots: {
@@ -67,7 +71,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     '@type': 'Person',
     name: siteConfig.name,
     url: siteConfig.url,
-    image: `${siteConfig.url}${siteConfig.ogImage}`,
+    image: siteConfig.ogImageAbsolute,
     email: siteConfig.author.email,
     jobTitle: 'Digital Marketer & Vibe Coder',
     description: siteConfig.shortDescription,
@@ -80,6 +84,15 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${spaceGrotesk.variable}`}>
+      <head>
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:secure_url" content={ogImageUrl} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:image" content={ogImageUrl} />
+        <link rel="image_src" href={ogImageUrl} />
+      </head>
       <body suppressHydrationWarning className="font-sans bg-[#F5F5F5] text-[#1E1E1E] antialiased selection:bg-[#FDB515] selection:text-[#1E1E1E] relative min-h-screen">
         <script
           type="application/ld+json"

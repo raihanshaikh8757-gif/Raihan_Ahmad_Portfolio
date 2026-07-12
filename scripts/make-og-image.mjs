@@ -50,6 +50,16 @@ await sharp(Buffer.from(svgText))
   .jpeg({ quality: 82, mozjpeg: true })
   .toFile('public/og-image.jpg');
 
-const meta = await sharp('public/og-image.jpg').metadata();
-const { size } = await import('node:fs').then((fs) => fs.promises.stat('public/og-image.jpg'));
-console.log(`og-image.jpg: ${meta.width}x${meta.height}, ${(size / 1024).toFixed(1)} KB`);
+await sharp(Buffer.from(svgText))
+  .composite([
+    { input: border, left: 680, top: 72 },
+    { input: photo, left: 688, top: 80 },
+  ])
+  .png({ compressionLevel: 9 })
+  .toFile('public/share-image.png');
+
+for (const file of ['public/og-image.jpg', 'public/share-image.png']) {
+  const meta = await sharp(file).metadata();
+  const { size } = await import('node:fs').then((fs) => fs.promises.stat(file));
+  console.log(`${file}: ${meta.width}x${meta.height}, ${(size / 1024).toFixed(1)} KB`);
+}
