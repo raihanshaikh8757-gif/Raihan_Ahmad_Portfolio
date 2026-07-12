@@ -6,8 +6,8 @@ export const siteConfig = {
   shortDescription:
     'Digital Marketer & Vibe Coder creating visuals and digital experiences that tell stories and drive results.',
   url: getSiteUrl(),
-  ogImage: '/share-image.png',
-  ogImageAbsolute: `${getSiteUrl()}/share-image.png`,
+  ogImage: '/og-image.jpg',
+  ogImageAbsolute: `${getSiteUrl()}/og-image.jpg`,
   locale: 'en_IN',
   keywords: [
     'Raihan Ahmad',

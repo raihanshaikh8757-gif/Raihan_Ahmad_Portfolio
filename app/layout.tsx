@@ -35,7 +35,7 @@ export const metadata: Metadata = {
       {
         url: ogImageUrl,
         secureUrl: ogImageUrl,
-        type: 'image/png',
+        type: 'image/jpeg',
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} — Digital Marketer & Vibe Coder`,
@@ -85,11 +85,19 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
+        <meta property="og:title" content={siteConfig.title} />
+        <meta property="og:description" content={siteConfig.shortDescription} />
+        <meta property="og:url" content={siteConfig.url} />
+        <meta property="og:type" content="website" />
         <meta property="og:image" content={ogImageUrl} />
         <meta property="og:image:secure_url" content={ogImageUrl} />
-        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={`${siteConfig.name} — Digital Marketer & Vibe Coder`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={siteConfig.title} />
+        <meta name="twitter:description" content={siteConfig.shortDescription} />
         <meta name="twitter:image" content={ogImageUrl} />
         <link rel="image_src" href={ogImageUrl} />
       </head>
